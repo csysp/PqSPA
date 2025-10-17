@@ -1,0 +1,19 @@
+[package]
+name = "spa-doorman"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1"
+thiserror = "1"
+pqcrypto-mlkem = "0.1"
+hmac = "0.12"
+sha2 = "0.10"
+base64 = "0.22"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+clap = { version = "4", features = ["derive"] }
+pqcrypto-traits = "0.3"
+
+[dev-dependencies]
+rand = "0.8"

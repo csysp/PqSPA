@@ -1,0 +1,26 @@
+[Unit]
+Description=SPA PQ Doorman (Kyber768 + HMAC, nftables opener)
+After=network-online.target nftables.service
+Wants=network-online.target nftables.service
+
+[Service]
+Type=simple
+User=root
+CapabilityBoundingSet=CAP_NET_ADMIN
+NoNewPrivileges=yes
+ExecStart=/usr/local/bin/spa-doorman run \
+  --listen 0.0.0.0:62201 \
+  --kem-priv /etc/spa/priv.bin \
+  --psk-file /etc/spa/psk.bin \
+  --open-secs 45 \
+  --window-secs 30 \
+  --nft-family inet \
+  --nft-table fw4 \
+  --nft-set wg_spa_allow \
+  --rate-pps 10 \
+  --rate-burst 20
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,8 @@
+{
+  "router_host": "router.example.com",
+  "spa_port": 62201,
+  "wg_port": 51820,
+  "kem_pub_b64": "<base64-of-router-pub.bin>",
+  "psk_b64": "<base64-of-32-byte-psk>"
+}
+
